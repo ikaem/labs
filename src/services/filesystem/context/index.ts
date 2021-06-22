@@ -1,1 +1,3 @@
-export { AuthContextProvider, AuthContext, intialAuthState } from './provider';
+export { reducer } from './reducer';
+export { FilesystemActionTypes, navigateToFolder } from './actions';
+export { FilesystemContext, FileSystemProvider } from './provider';

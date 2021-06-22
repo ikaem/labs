@@ -1,19 +1,41 @@
-import { createContext, useState } from 'react';
+import { createContext, Dispatch, useReducer } from 'react';
+import { reducer } from '.';
+import { FilesystemState, NavigateToFolderAction } from '../types';
+
+// TODO interface move to types
 
 // TODO type this
-export const intialAuthState = {
-  username: null,
-  isLoggedIn: false,
+export const initialFilesystemState: FilesystemState = {
+  currentFolder: [],
+  currentPath: [],
+  root: {
+    type: 'folder',
+    name: 'My filesystem',
+    createdAt: '2022-06-22',
+    updatedAt: '2022-06-22',
+    content: [],
+  },
 };
 
-export const AuthContext = createContext<any>(null);
+export const FilesystemContext = createContext<{
+  filesystemState: FilesystemState;
+  dispatchFilesystemState: Dispatch<NavigateToFolderAction>;
+}>({
+  filesystemState: initialFilesystemState,
+  dispatchFilesystemState: () => {},
+});
 
-export const AuthContextProvider: React.FC = ({ children }) => {
-  const [authState, setAuthState] = useState(intialAuthState);
+export const FileSystemProvider: React.FC = ({ children }) => {
+  const [filesystemState, dispatchFilesystemState] = useReducer(
+    reducer,
+    initialFilesystemState
+  );
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
+    <FilesystemContext.Provider
+      value={{ filesystemState, dispatchFilesystemState }}
+    >
       {children}
-    </AuthContext.Provider>
+    </FilesystemContext.Provider>
   );
 };

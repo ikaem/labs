@@ -1,10 +1,13 @@
 import { Router } from '@reach/router';
 import { AuthContextProvider } from '../services/auth';
+import { FileSystemProvider } from '../services/filesystem';
 
 export const Providers: React.FC = ({ children }) => {
   return (
     <AuthContextProvider>
-      <Router>{children}</Router>
+      <FileSystemProvider>
+        <Router>{children}</Router>
+      </FileSystemProvider>
     </AuthContextProvider>
   );
 };

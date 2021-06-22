@@ -1,2 +1,5 @@
-export { AuthContext, AuthContextProvider, intialAuthState } from './context';
-export { useAuth } from './hooks';
+export {
+  navigateToFolder,
+  FilesystemContext,
+  FileSystemProvider,
+} from './context';
