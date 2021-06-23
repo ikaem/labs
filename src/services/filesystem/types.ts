@@ -1,7 +1,30 @@
 import { FilesystemActionTypes } from './context/actions';
 
+export interface ChangeCurrentFolderAction {
+  type: FilesystemActionTypes.CHANGE_CURRENT_FOLDER;
+}
+
 export interface NavigateToFolderAction {
   type: FilesystemActionTypes.NAVIGATE_TO_PATH;
+  payload: Folder;
+}
+
+export interface NavigateBackAction {
+  type: FilesystemActionTypes.NAVIGATE_BACK;
+}
+
+export interface JumpToPathAction {
+  type: FilesystemActionTypes.JUMP_TO_PATH;
+  payload: number;
+}
+
+export interface AddFileAction {
+  type: FilesystemActionTypes.ADD_FILE;
+  payload: TextFile;
+}
+
+export interface AddFolderAction {
+  type: FilesystemActionTypes.ADD_FOLDER;
   payload: Folder;
 }
 
@@ -14,7 +37,7 @@ export interface Folder {
 }
 
 export interface TextFile {
-  type: 'folder';
+  type: 'text';
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -22,7 +45,7 @@ export interface TextFile {
 }
 
 export interface FilesystemState {
-  currentFolder: Folder[];
+  currentFolder: (Folder | TextFile)[];
   currentPath: string[];
   root: Folder;
 }

@@ -1,6 +1,7 @@
 import { createContext, Dispatch, useReducer } from 'react';
 import { reducer } from '.';
 import { FilesystemState, NavigateToFolderAction } from '../types';
+import { AllActions } from './reducer';
 
 // TODO interface move to types
 
@@ -19,7 +20,7 @@ export const initialFilesystemState: FilesystemState = {
 
 export const FilesystemContext = createContext<{
   filesystemState: FilesystemState;
-  dispatchFilesystemState: Dispatch<NavigateToFolderAction>;
+  dispatchFilesystemState: Dispatch<AllActions>;
 }>({
   filesystemState: initialFilesystemState,
   dispatchFilesystemState: () => {},
