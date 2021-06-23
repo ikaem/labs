@@ -1,7 +1,7 @@
 import { RouteComponentProps } from '@reach/router';
-import './App.css';
 import { Login } from './modules/login';
 import { OS } from './modules/os/';
+import './styles/main.scss';
 
 const App: React.FC<RouteComponentProps> = () => {
   return (

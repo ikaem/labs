@@ -8,7 +8,7 @@ import {
   jumpToPath,
   navigateBack,
 } from '../context/actions';
-import { Folder } from '../types';
+import { Folder, TextFile } from '../types';
 
 export const useFilesystem = () => {
   const { filesystemState, dispatchFilesystemState } =
@@ -24,6 +24,14 @@ export const useFilesystem = () => {
     return dispatchFilesystemState(navigateToFolder(folder));
   };
 
+  // TODO open file - maybe have some openedFiles array state - and push inside - or maybe set state somewhere else, or maybe somewhere in the running apps - type and so on
+  // TODO or maybe do keep openFiles state here
+  // and then the installed text app will be checking that, to open one if needed - and then whichever is first in the array, will be shown first
+
+  const openFile = (textFile: TextFile) => {
+    // TODO make action for this, and dispatch
+    // TODO action should add the file the the currentFiles array
+  };
   const goBack = () => {
     return dispatchFilesystemState(navigateBack());
   };
@@ -50,6 +58,7 @@ export const useFilesystem = () => {
     root,
     setCurrentFolder,
     goToFolder,
+    openFile,
     goBack,
     jumpToFolder,
     createFile,

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { FileBrowser } from '../../common/components';
 
 export const OS = () => {
   const [showTextFile, setShowTextFile] = useState(false);
@@ -191,8 +192,9 @@ export const OS = () => {
   console.log('filesystem close to return', fileSystem);
 
   return (
-    <div className='App'>
-      <ul>
+    <div>
+      <FileBrowser />
+      {/* <ul>
         {fileSystem.currentPath.map((e: any, index: number) => {
           return (
             <li
@@ -258,7 +260,7 @@ export const OS = () => {
           </p>
           <p>{fileSystem.currentText}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

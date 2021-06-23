@@ -7,7 +7,7 @@ export const getCurrentFolderContents = (
   let currentFolderContents = rootContents;
   for (const path of currentPath) {
     const i = currentFolderContents.findIndex((e) => {
-      e.name === path && e.type === 'folder';
+      return e.name === path && e.type === 'folder';
     });
     currentFolderContents = currentFolderContents[i].content as Folder[];
   }

@@ -45,6 +45,7 @@ export interface TextFile {
 }
 
 export interface FilesystemState {
+  currentFiles: TextFile[];
   currentFolder: (Folder | TextFile)[];
   currentPath: string[];
   root: Folder;

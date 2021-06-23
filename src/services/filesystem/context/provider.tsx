@@ -7,6 +7,8 @@ import { AllActions } from './reducer';
 
 // TODO type this
 export const initialFilesystemState: FilesystemState = {
+  // TODO not sure about this, leave comment
+  currentFiles: [],
   currentFolder: [],
   currentPath: [],
   root: {

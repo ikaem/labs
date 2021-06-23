@@ -22,10 +22,6 @@ export type AllActions =
 export const reducer = (state: FilesystemState, action: AllActions) => {
   switch (action.type) {
     case FilesystemActionTypes.CHANGE_CURRENT_FOLDER: {
-      const currentFolder = getCurrentFolderContents(
-        state.root.content,
-        state.currentPath
-      );
       return {
         ...state,
         currentFolder: getCurrentFolderContents(
