@@ -1,4 +1,4 @@
-import { Router } from '@reach/router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthContextProvider } from '../services/auth';
 import { FileSystemProvider } from '../services/filesystem';
 

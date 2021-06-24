@@ -1,0 +1,13 @@
+.os {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  @media screen and (max-width: 48rem) {
+    grid-template-columns: 100%;
+
+    .os-wrapper.section2 {
+      grid-row: 1;
+    }
+  }
+}

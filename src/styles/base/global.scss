@@ -6,10 +6,12 @@ body,
 #root,
 div[tabIndex='-1'] {
   height: 100%;
+  width: 100vw;
 }
 
 body {
   overflow-x: hidden;
+  background-color: $dark_gray_background;
 }
 
 /* reset */

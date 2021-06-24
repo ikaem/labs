@@ -1,0 +1,85 @@
+.filesystem {
+  padding: 1rem 1rem 2rem;
+  background-color: $gray_background;
+  border-radius: 4px;
+  // overflow-x: auto;
+
+  .filesystem_header {
+    color: $muted_text;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $muted_text;
+    margin-bottom: 0.5rem;
+    display: flex;
+
+    h2 {
+      font-size: 0.85rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-right: auto;
+    }
+  }
+
+  .filesystem_path-container {
+    padding-bottom: 1rem;
+    color: $dark_text;
+    ul {
+      display: flex;
+
+      li {
+        span {
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+            color: lighten($color: $dark_text, $amount: 20);
+          }
+        }
+      }
+    }
+  }
+
+  .filesystem_table {
+    overflow-x: auto;
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+
+      td,
+      th {
+        border-bottom: 1px solid;
+        padding: 0.5rem;
+        text-align: right;
+        // min-width: 15rem;
+
+        &:first-child,
+        &:nth-child(2) {
+          text-align: left;
+          cursor: pointer;
+          &:hover {
+            color: darken($color: #000000, $amount: 0);
+          }
+        }
+
+        &:first-child,
+        &:last-child {
+          width: 2rem !important;
+          max-width: 2rem;
+        }
+
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+          min-width: 13rem;
+        }
+      }
+      th {
+        color: $dark_text;
+        border-color: darken($color: $light_gray_background, $amount: 20);
+      }
+      td {
+        color: $light_text;
+        border-color: darken($color: $light_gray_background, $amount: 25);
+      }
+    }
+  }
+}

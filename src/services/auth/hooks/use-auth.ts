@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { navigate } from '@reach/router';
+import { useContext, useEffect } from 'react';
 import { AuthContext, intialAuthState } from '../';
 
 // TODO add to constants
@@ -14,18 +15,17 @@ export const useAuth = () => {
   //   TODO type proper
   const login = ({ username, password }: any) => {
     if (username !== USER || password !== PASS) {
-      //   TODO add taht JSON server, and then fetch the user
       // TODO show errors here with add toast
       return;
     }
     setAuthState({ username, isLoggedIn: true });
-    return; // redirect here
+    navigate('/home');
+    // return; // redirect here
   };
 
   //   TODO type proper
   const logout = () => {
     setAuthState(intialAuthState);
-    return; // redirect here
   };
 
   return {

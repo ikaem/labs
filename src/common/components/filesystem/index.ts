@@ -1,1 +1,1 @@
-export { FileBrowser } from './file-browser';
+export { Filesystem } from './filesystem';

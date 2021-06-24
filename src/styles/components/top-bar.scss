@@ -1,0 +1,41 @@
+.top-bar {
+  background-color: $gray_background;
+  padding: 1rem;
+  color: $light_text;
+  word-wrap: break-word;
+
+  .top-bar_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .start-button {
+      margin-right: auto;
+      background-color: $dark_background;
+      padding: 4px 16px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($color: $dark_background, $amount: 10);
+      }
+      &:active {
+        background-color: lighten($color: $dark_background, $amount: 15);
+      }
+    }
+
+    .greeting {
+      margin: 0 2rem;
+      text-align: right;
+    }
+
+    .container_clock-wrapper {
+      background-color: $dark_background;
+      padding: 4px 16px 6px;
+      border-radius: 4px;
+      color: $muted_text;
+      text-align: right;
+    }
+  }
+}

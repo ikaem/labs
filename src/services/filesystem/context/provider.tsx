@@ -10,13 +10,22 @@ export const initialFilesystemState: FilesystemState = {
   // TODO not sure about this, leave comment
   currentFiles: [],
   currentFolder: [],
+  // TODO testing
   currentPath: [],
   root: {
     type: 'folder',
     name: 'My filesystem',
     createdAt: '2022-06-22',
     updatedAt: '2022-06-22',
-    content: [],
+    content: [
+      {
+        name: 'Test folder',
+        content: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        type: 'folder',
+      },
+    ],
   },
 };
 
