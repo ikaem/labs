@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { AuthContext, intialAuthState } from '../';
-import { USER } from '../../../common/contants';
+import { USER } from '../../../common/constants';
 import { LoginCredentials } from '../types';
 
 export const useAuth = () => {

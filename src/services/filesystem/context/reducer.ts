@@ -8,7 +8,7 @@ import {
   NavigateToFolderAction,
 } from '../types';
 import { FilesystemActionTypes } from '.';
-import { getCurrentFolderContents } from '../../../common';
+import { getCurrentFolderContents } from '../../../common/helpers';
 
 // TODO type aciton
 export type AllActions =

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
 import { useAuth } from '../../services/auth';
-import { ROUTES } from '../contants';
+import { ROUTES } from '../constants';
 
 interface ProtectedRouteProps {}
 

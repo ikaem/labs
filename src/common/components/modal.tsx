@@ -1,19 +1,32 @@
+import { CloseIcon } from './icons';
+
 interface ModalProps {
   isModalOpen: boolean;
-  closeModal: () => void;
+  closeModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  modalTitle: string;
 }
 
 export const Modal: React.FC<ModalProps> = ({
   children,
   isModalOpen,
   closeModal,
+  modalTitle,
 }) => {
-  // TODO style this thing, to make it actual modal
   if (!isModalOpen) return null;
   return (
-    <div>
-      <button onClick={closeModal}>Close</button>
-      {children}
+    <div className='modal'>
+      <div className='modal_backdrop' onClick={closeModal}></div>
+      <div className='modal_wrapper'>
+        <div className='modal_content'>
+          <header className='modal_header'>
+            <h2>{modalTitle}</h2>
+            <button onClick={closeModal}>
+              <CloseIcon className='icon' />
+            </button>
+          </header>
+          <div className='modal_app'>{children}</div>
+        </div>
+      </div>
     </div>
   );
 };

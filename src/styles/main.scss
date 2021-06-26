@@ -1,6 +1,7 @@
 @import './base/colors.scss', './base/global.scss';
 
 @import './components/layout.scss', './components/top-bar.scss',
-  './components/filesystem.scss';
+  './components/filesystem.scss', './components/icons.scss',
+  './components/modal.scss';
 
 @import './modules/os.scss', './modules/login.scss';

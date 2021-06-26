@@ -1,1 +1,0 @@
-export { getCurrentFolderContents } from './helpers';
