@@ -1,12 +1,11 @@
 .os {
-  margin: 1rem;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 100%;
 
-  @media screen and (max-width: 48rem) {
-    grid-template-columns: 100%;
+  @media screen and (min-width: 48rem) {
+    grid-template-columns: 50% 50%;
 
-    .os-wrapper.section2 {
+    .os_func-wrapper:nth-child(2) {
       grid-row: 1;
     }
   }

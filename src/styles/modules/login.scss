@@ -1,0 +1,76 @@
+.login_section {
+  margin: 3rem auto 0;
+  padding: 1rem 1rem 2rem;
+  background-color: $gray_background;
+  border-radius: 4px;
+  max-width: 23.25rem;
+
+  .login_header {
+    color: $muted_text;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $muted_text;
+    margin-bottom: 0.5rem;
+    display: flex;
+
+    h2 {
+      font-size: 0.85rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-right: auto;
+    }
+  }
+
+  .login_form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    width: 75%;
+    min-width: 13.875rem;
+    margin: 0 auto;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+      position: relative;
+
+      label {
+        font-size: 0.85rem;
+        color: $muted_text;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        background-color: $dark_background;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        color: $light_text;
+      }
+
+      .text-error {
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+        color: $dark_text;
+      }
+    }
+    // TODO this botton same as start probably
+    // TODO rule only for when it is different screen sizes
+    // TODO otherwise, create a component
+    button {
+      // TODO margin also stays here
+      margin-top: 0.5rem;
+      background-color: $light_gray_background;
+      padding: 4px 16px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($color: $dark_background, $amount: 10);
+      }
+      &:active {
+        background-color: lighten($color: $dark_background, $amount: 15);
+      }
+    }
+  }
+}

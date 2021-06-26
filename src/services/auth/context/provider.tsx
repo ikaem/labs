@@ -1,12 +1,19 @@
-import { createContext, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { AuthState } from '../types';
 
 // TODO type this
-export const intialAuthState = {
+export const intialAuthState: AuthState = {
   username: null,
   isLoggedIn: false,
 };
 
-export const AuthContext = createContext<any>(null);
+export const AuthContext = createContext<{
+  authState: AuthState;
+  setAuthState: Dispatch<SetStateAction<AuthState>>;
+}>({
+  authState: intialAuthState,
+  setAuthState: () => {},
+});
 
 export const AuthContextProvider: React.FC = ({ children }) => {
   const [authState, setAuthState] = useState(intialAuthState);

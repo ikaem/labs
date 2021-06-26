@@ -52,18 +52,6 @@ export const Filesystem: React.FC<FilesystemProps> = () => {
   );
 
   const renderedCurrentPath = useMemo(() => {
-    // TODO temp for styling
-
-    // return (
-    //   <ul>
-    //     {['documents', 'videos', 'mine'].map((e, i) => (
-    //       <li onClick={() => jumpToFolder(i + 1)}>
-    //         <span>{e}</span> /&nbsp;
-    //       </li>
-    //     ))}
-    //   </ul>
-    // );
-
     return (
       <ul>
         {currentPath.map((e, i) => (

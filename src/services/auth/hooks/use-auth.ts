@@ -1,25 +1,24 @@
-import { navigate } from '@reach/router';
 import { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { AuthContext, intialAuthState } from '../';
-
-// TODO add to constants
-const USER = 'borgoth@mordos.com';
-const PASS = '12bindthem';
+import { USER } from '../../../common/contants';
+import { LoginCredentials } from '../types';
 
 export const useAuth = () => {
+  const history = useHistory();
   const {
     authState: { username, isLoggedIn },
     setAuthState,
   } = useContext(AuthContext);
 
   //   TODO type proper
-  const login = ({ username, password }: any) => {
-    if (username !== USER || password !== PASS) {
+  const login = ({ username, password }: LoginCredentials) => {
+    if (username !== USER.username || password !== USER.password) {
       // TODO show errors here with add toast
       return;
     }
     setAuthState({ username, isLoggedIn: true });
-    navigate('/home');
+    history.push('/home');
     // return; // redirect here
   };
 

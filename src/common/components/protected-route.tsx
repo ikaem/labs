@@ -1,4 +1,3 @@
-// import { navigate, RouteComponentProps, Router, Redirect } from '@reach/router';
 import { useEffect } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
 import { useAuth } from '../../services/auth';
@@ -13,11 +12,10 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = () => {
   useEffect(() => {
     //   TODO this needs revert
     // if (!isLoggedIn) navigate('/login');
-    if (isLoggedIn) history.push('/login');
+    if (!isLoggedIn) history.push('/login');
   }, [isLoggedIn]);
 
   return (
-    // <Router>
     <>
       {ROUTES.map((route) => (
         <Route exact key={route.path} path={route.path}>

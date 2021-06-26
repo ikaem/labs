@@ -194,10 +194,10 @@ export const OS = () => {
   return (
     <Layout>
       <div className='os'>
-        <div className='os-wrapper section1'>Hello</div>
-        <div className='os-wrapper section2'>
+        <div className='os_func-wrapper'>
           <Filesystem />
         </div>
+        <div className='os_func-wrapper'>Hello</div>
       </div>
       {/* <ul>
         {fileSystem.currentPath.map((e: any, index: number) => {
