@@ -1,0 +1,7 @@
+.clock {
+  @media screen and (min-width: 36rem) {
+    .clock_splitter {
+      display: none;
+    }
+  }
+}

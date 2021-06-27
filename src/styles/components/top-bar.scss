@@ -1,8 +1,9 @@
 .top-bar {
   background-color: $gray_background;
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
   color: $light_text;
   word-wrap: break-word;
+  position: relative;
 
   .top-bar_container {
     display: flex;
@@ -39,5 +40,12 @@
       color: $muted_text;
       text-align: right;
     }
+  }
+
+  .lower-bar {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.5rem;
+    color: darken($emphasis_orange, 7);
   }
 }

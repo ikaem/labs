@@ -1,0 +1,78 @@
+// Edit File component
+// TODO this can all be merged into a single component
+// TODO move this to their own files
+.add-file {
+  padding: 0.5rem 0 1rem;
+
+  .add-file_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 33.125rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+      position: relative;
+
+      label {
+        font-size: 0.85rem;
+        color: lighten($black_text, 15);
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      textarea {
+        background-color: $light_background;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        color: $dark_text;
+      }
+
+      .text-error {
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+        color: $dark_text;
+      }
+    }
+
+    .form_actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+
+      .actions_btn {
+        margin-top: 0.5rem;
+        background-color: $dark_background;
+        padding: 4px 16px 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: $light_text;
+
+        &:hover {
+          background-color: lighten($color: $dark_background, $amount: 10);
+        }
+        &:active {
+          background-color: lighten($color: $dark_background, $amount: 15);
+        }
+
+        &.cancel-btn {
+          color: darken($color: $light_text, $amount: 20);
+        }
+      }
+
+      @media screen and (min-width: 36rem) {
+        display: flex;
+        flex-direction: row;
+
+        .actions_btn {
+          &.cancel-btn {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
