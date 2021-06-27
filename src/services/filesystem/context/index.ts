@@ -1,6 +1,7 @@
 export { reducer } from './reducer';
 export {
   FilesystemActionTypes,
+  loadFilesystem,
   navigateToFolder,
   changeCurrentFolder,
   jumpToPath,
@@ -11,4 +12,8 @@ export {
   modifyFolder,
   removeItem,
 } from './actions';
-export { FilesystemContext, FileSystemProvider } from './provider';
+export {
+  FilesystemContext,
+  FileSystemProvider,
+  initialFilesystemState,
+} from './provider';

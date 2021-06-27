@@ -1,4 +1,5 @@
 export {
+  loadFilesystem,
   navigateToFolder,
   changeCurrentFolder,
   jumpToPath,
@@ -10,6 +11,7 @@ export {
   removeItem,
   FilesystemContext,
   FileSystemProvider,
+  initialFilesystemState,
 } from './context';
 
 export { useFilesystem } from './hooks';

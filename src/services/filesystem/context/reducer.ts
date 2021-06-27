@@ -9,6 +9,7 @@ import {
   ModifyFileAction,
   ModifyFolderAction,
   DeleteItemAction,
+  LoadFilesystemAction,
 } from '../types';
 import { FilesystemActionTypes } from '.';
 import { getCurrentFolderContents } from '../../../common/helpers';
@@ -23,10 +24,15 @@ export type AllActions =
   | AddFolderAction
   | ModifyFolderAction
   | ModifyFileAction
-  | DeleteItemAction;
+  | DeleteItemAction
+  | LoadFilesystemAction;
 
 export const reducer = (state: FilesystemState, action: AllActions) => {
   switch (action.type) {
+    case FilesystemActionTypes.LOAD_FILESYSTEM: {
+      return action.payload;
+    }
+
     case FilesystemActionTypes.CHANGE_CURRENT_FOLDER: {
       return {
         ...state,

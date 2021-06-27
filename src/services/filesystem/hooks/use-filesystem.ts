@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import id from 'uniqid';
+import { createLocalStorageStateHook } from 'use-local-storage-state';
+
 import {
   FilesystemContext,
   addFile,
@@ -11,28 +13,40 @@ import {
   modifyFile,
   modifyFolder,
   removeItem,
+  loadFilesystem,
 } from '..';
 import {
   FolderEditorModalProps,
   FileEditorModalProps,
 } from '../../../common/components/filesystem';
-import { FilesystemSort, Folder, TextFile } from '../types';
+import { localStorageKeys } from '../../../common/constants';
+import { FilesystemSort, FilesystemState, Folder, TextFile } from '../types';
 
 export const useFilesystem = () => {
-  const [filesystemSort, setFilesystemSort] = useState<FilesystemSort>({
-    sortBy: 'name',
-    order: 'desc',
-  });
-
+  const useStoredFilesystem = createLocalStorageStateHook<FilesystemState>(
+    localStorageKeys.FILESYSTEM
+  );
   const { filesystemState, dispatchFilesystemState } =
     useContext(FilesystemContext);
   const { currentFolder, currentPath, root } = filesystemState;
 
+  const [filesystemSort, setFilesystemSort] = useState<FilesystemSort>({
+    sortBy: 'name',
+    order: 'desc',
+  });
   const [editFolderControl, setEditFolderControl] =
     useState<FolderEditorModalProps | null>(null);
 
   const [editFileControl, setEditFileControl] =
     useState<FileEditorModalProps | null>(null);
+
+  const [storedFilesystem, setStoredFilesystem] = useStoredFilesystem();
+
+  console.log('stored from local', storedFilesystem);
+
+  const loadStoredFilesystem = (storedFilesystem: FilesystemState) => {
+    dispatchFilesystemState(loadFilesystem(storedFilesystem));
+  };
 
   const setCurrentFolder = () => {
     return dispatchFilesystemState(changeCurrentFolder());
@@ -171,10 +185,16 @@ export const useFilesystem = () => {
     });
   }, [filesystemSort]);
 
+  useEffect(() => {
+    setStoredFilesystem(filesystemState);
+  }, [filesystemState]);
+
   return {
     currentFolder,
     currentPath,
     root,
+    useStoredFilesystem,
+    loadStoredFilesystem,
     setCurrentFolder,
     goToFolder,
     goBack,

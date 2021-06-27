@@ -1,15 +1,27 @@
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { createLocalStorageStateHook } from 'use-local-storage-state';
+
 import { AuthContext, intialAuthState } from '../';
-import { USER } from '../../../common/constants';
-import { LoginCredentials } from '../types';
+import { localStorageKeys, USER } from '../../../common/constants';
+import { AuthState, LoginCredentials } from '../types';
 
 export const useAuth = () => {
+  const useStoredAuth = createLocalStorageStateHook<AuthState>(
+    localStorageKeys.AUTH
+  );
+
   const history = useHistory();
   const {
     authState: { username, isLoggedIn },
     setAuthState,
   } = useContext(AuthContext);
+
+  const [storedAuth, setStoredAuth] = useStoredAuth();
+
+  const loadStoredAuth = (storedAuth: AuthState) => {
+    setAuthState(storedAuth);
+  };
 
   //   TODO type proper
   const login = ({ username, password }: LoginCredentials) => {
@@ -18,6 +30,7 @@ export const useAuth = () => {
       return;
     }
     setAuthState({ username, isLoggedIn: true });
+    setStoredAuth({ username, isLoggedIn: true });
     history.push('/home');
     // return; // redirect here
   };
@@ -25,6 +38,7 @@ export const useAuth = () => {
   //   TODO type proper
   const logout = () => {
     setAuthState(intialAuthState);
+    setStoredAuth.reset();
   };
 
   return {
@@ -32,5 +46,7 @@ export const useAuth = () => {
     isLoggedIn,
     login,
     logout,
+    loadStoredAuth,
+    useStoredAuth,
   };
 };

@@ -7,6 +7,13 @@ import { useAuth } from './services/auth';
 import './styles/main.scss';
 
 const App: React.FC = () => {
+  const { loadStoredAuth, useStoredAuth } = useAuth();
+  const [storedAuth] = useStoredAuth();
+
+  useEffect(() => {
+    if (storedAuth) loadStoredAuth(storedAuth);
+  }, []);
+
   return (
     <Switch>
       <Route exact path='/login'>

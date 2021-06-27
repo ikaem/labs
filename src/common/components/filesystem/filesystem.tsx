@@ -38,7 +38,7 @@ export const Filesystem: React.FC<FilesystemProps> = () => {
   } = useFilesystem();
 
   const renderedFilesAndFolders = currentFolder.map((e) => (
-    <tr>
+    <tr key={e.id}>
       <td>{e.type === 'folder' ? <FolderIcon /> : <TextFileIcon />}</td>
       <td className='content-type-name'>
         <span
@@ -78,7 +78,7 @@ export const Filesystem: React.FC<FilesystemProps> = () => {
           <span>My filesystem</span> /&nbsp;
         </li>
         {currentPath.map((e, i) => (
-          <li onClick={() => jumpToFolder(i + 1)}>
+          <li key={i} onClick={() => jumpToFolder(i + 1)}>
             <span>{e}</span> /&nbsp;
           </li>
         ))}

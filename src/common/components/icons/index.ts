@@ -6,3 +6,4 @@ export { ReactComponent as NewFolderIcon } from '../../../assets/images/icons/ne
 export { ReactComponent as CloseIcon } from '../../../assets/images/icons/close.svg';
 export { ReactComponent as EditIcon } from '../../../assets/images/icons/edit.svg';
 export { ReactComponent as DeleteIcon } from '../../../assets/images/icons/delete.svg';
+export { ReactComponent as LogoutIcon } from '../../../assets/images/icons/logout.svg';

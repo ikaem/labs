@@ -3,8 +3,10 @@ import {
   AddFolderAction,
   ChangeCurrentFolderAction,
   DeleteItemAction,
+  FilesystemState,
   Folder,
   JumpToPathAction,
+  LoadFilesystemAction,
   ModifyFileAction,
   ModifyFolderAction,
   NavigateBackAction,
@@ -13,6 +15,7 @@ import {
 } from '../types';
 
 export enum FilesystemActionTypes {
+  LOAD_FILESYSTEM = 'load_filesystem',
   CHANGE_CURRENT_FOLDER = 'set_current_folder',
   NAVIGATE_TO_PATH = 'navigate_to_path',
   NAVIGATE_BACK = 'navigate_back',
@@ -23,6 +26,15 @@ export enum FilesystemActionTypes {
   MODIFY_FOLDER = 'modify_folder',
   DELETE_ITEM = 'delete_item',
 }
+
+export const loadFilesystem = (
+  filesystem: FilesystemState
+): LoadFilesystemAction => {
+  return {
+    type: FilesystemActionTypes.LOAD_FILESYSTEM,
+    payload: filesystem,
+  };
+};
 
 export const changeCurrentFolder = (): ChangeCurrentFolderAction => {
   return {

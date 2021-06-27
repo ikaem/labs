@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 export const Clock: React.FC = () => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(new Date().toISOString());
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -47,5 +47,21 @@
     right: 1rem;
     bottom: 0.5rem;
     color: darken($emphasis_orange, 7);
+
+    .greeting {
+      // display: flex;
+      // align-items: center;
+
+      span,
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      svg {
+        margin-left: 1rem;
+        color: $muted_text;
+      }
+    }
   }
 }

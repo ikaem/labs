@@ -43,6 +43,11 @@ export interface DeleteItemAction {
   payload: string;
 }
 
+export interface LoadFilesystemAction {
+  type: FilesystemActionTypes.LOAD_FILESYSTEM;
+  payload: FilesystemState;
+}
+
 export enum FilesystemTypes {
   FOLDER = 'folder',
   TEXT_FILE = 'text',

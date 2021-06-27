@@ -11,3 +11,8 @@ export const USER = {
 };
 
 export const VALID_FILE_FOLDER_NAME_EXPRESSION = new RegExp(/^[a-zA-Z].*/);
+
+export enum localStorageKeys {
+  FILESYSTEM = 'filesystem',
+  AUTH = 'auth',
+}
