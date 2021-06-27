@@ -2,10 +2,14 @@ import {
   AddFileAction,
   AddFolderAction,
   ChangeCurrentFolderAction,
+  DeleteItemAction,
   Folder,
   JumpToPathAction,
+  ModifyFileAction,
+  ModifyFolderAction,
   NavigateBackAction,
   NavigateToFolderAction,
+  TextFile,
 } from '../types';
 
 export enum FilesystemActionTypes {
@@ -14,7 +18,10 @@ export enum FilesystemActionTypes {
   NAVIGATE_BACK = 'navigate_back',
   JUMP_TO_PATH = 'jump_to_path',
   ADD_FILE = 'add_file',
+  MODIFY_FILE = 'modify_file',
   ADD_FOLDER = 'add_folder',
+  MODIFY_FOLDER = 'modify_folder',
+  DELETE_ITEM = 'delete_item',
 }
 
 export const changeCurrentFolder = (): ChangeCurrentFolderAction => {
@@ -43,32 +50,37 @@ export const jumpToPath = (id: number): JumpToPathAction => {
   };
 };
 
-export const addFile = (name: string, content: string): AddFileAction => {
-  // check if file already exists in the current directory, but check it inside that function coming from the hook
-  // TODO at this point, all is good already
+export const addFile = (file: TextFile): AddFileAction => {
   return {
     type: FilesystemActionTypes.ADD_FILE,
-    payload: {
-      name,
-      content,
-      type: 'text',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
+    payload: file,
   };
 };
 
-export const addFolder = (name: string): AddFolderAction => {
-  // check if file already exists in the current directory, but check it inside that function coming from the hook
-  // TODO at this point, all is good already
+export const modifyFile = (file: TextFile): ModifyFileAction => {
+  return {
+    type: FilesystemActionTypes.MODIFY_FILE,
+    payload: file,
+  };
+};
+
+export const addFolder = (folder: Folder): AddFolderAction => {
   return {
     type: FilesystemActionTypes.ADD_FOLDER,
-    payload: {
-      name,
-      content: [],
-      type: 'folder',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
+    payload: folder,
+  };
+};
+
+export const modifyFolder = (folder: Folder): ModifyFolderAction => {
+  return {
+    type: FilesystemActionTypes.MODIFY_FOLDER,
+    payload: folder,
+  };
+};
+
+export const removeItem = (id: string): DeleteItemAction => {
+  return {
+    type: FilesystemActionTypes.DELETE_ITEM,
+    payload: id,
   };
 };

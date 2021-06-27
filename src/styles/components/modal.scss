@@ -3,26 +3,30 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
 
   .modal_backdrop {
-    background-color: rgba(98, 109, 122, 0.3);
     -webkit-backdrop-filter: blur(1px);
     backdrop-filter: blur(1px);
     position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0px;
     height: 100%;
     width: 100%;
   }
   .modal_wrapper {
     position: relative;
-    margin: 0 1rem;
+    margin: 0 auto;
+    max-width: 48rem;
+    padding: 0 1rem;
     .modal_content {
       // TODO use 4rem
       // margin: 4rem auto;
       margin: 9rem auto;
       padding: 1rem 0 2rem;
       background-color: $light_gray_background;
-      max-width: 48rem;
       border-radius: 4px;
 
       .modal_header,

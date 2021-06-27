@@ -6,6 +6,9 @@ import {
   JumpToPathAction,
   NavigateBackAction,
   NavigateToFolderAction,
+  ModifyFileAction,
+  ModifyFolderAction,
+  DeleteItemAction,
 } from '../types';
 import { FilesystemActionTypes } from '.';
 import { getCurrentFolderContents } from '../../../common/helpers';
@@ -17,7 +20,10 @@ export type AllActions =
   | NavigateBackAction
   | JumpToPathAction
   | AddFileAction
-  | AddFolderAction;
+  | AddFolderAction
+  | ModifyFolderAction
+  | ModifyFileAction
+  | DeleteItemAction;
 
 export const reducer = (state: FilesystemState, action: AllActions) => {
   switch (action.type) {
@@ -46,7 +52,11 @@ export const reducer = (state: FilesystemState, action: AllActions) => {
     case FilesystemActionTypes.JUMP_TO_PATH: {
       return {
         ...state,
-        currentPath: state.currentPath.slice(0, action.payload + 1),
+
+        currentPath:
+          action.payload === 0
+            ? []
+            : state.currentPath.slice(0, action.payload),
       };
     }
 
@@ -60,6 +70,20 @@ export const reducer = (state: FilesystemState, action: AllActions) => {
       return newState;
     }
 
+    case FilesystemActionTypes.MODIFY_FILE: {
+      const newState = { ...state };
+      const currentFolderContents = getCurrentFolderContents(
+        newState.root.content,
+        newState.currentPath
+      );
+
+      const fileIndex = currentFolderContents.findIndex(
+        (f) => f.id === action.payload.id
+      );
+      currentFolderContents[fileIndex] = action.payload;
+      return newState;
+    }
+
     case FilesystemActionTypes.ADD_FOLDER: {
       const newState = { ...state };
       const currentFolderContents = getCurrentFolderContents(
@@ -69,6 +93,38 @@ export const reducer = (state: FilesystemState, action: AllActions) => {
       currentFolderContents.push(action.payload);
       return newState;
     }
+
+    case FilesystemActionTypes.MODIFY_FOLDER: {
+      const newState = { ...state };
+      const currentFolderContents = getCurrentFolderContents(
+        newState.root.content,
+        newState.currentPath
+      );
+
+      const folderIndex = currentFolderContents.findIndex(
+        (f) => f.id === action.payload.id
+      );
+      currentFolderContents[folderIndex] = action.payload;
+      return newState;
+    }
+
+    case FilesystemActionTypes.DELETE_ITEM: {
+      const newState = { ...state };
+      const currentFolderContents = getCurrentFolderContents(
+        newState.root.content,
+        newState.currentPath
+      );
+
+      const newArray = currentFolderContents.filter(
+        (i) => i.id !== action.payload
+      );
+
+      currentFolderContents.length = 0;
+      currentFolderContents.push(...newArray);
+
+      return newState;
+    }
+
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import { CloseIcon } from './icons';
 
-interface ModalProps {
+export interface ModalProps {
   isModalOpen: boolean;
   closeModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
   modalTitle: string;
@@ -15,7 +15,7 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isModalOpen) return null;
   return (
     <div className='modal'>
-      <div className='modal_backdrop' onClick={closeModal}></div>
+      <div className='modal_backdrop' />
       <div className='modal_wrapper'>
         <div className='modal_content'>
           <header className='modal_header'>

@@ -9,3 +9,5 @@ export const USER = {
   username: 'borgoth@mordos.com',
   password: '12bindthem',
 };
+
+export const VALID_FILE_FOLDER_NAME_EXPRESSION = new RegExp(/^[a-zA-Z].*/);

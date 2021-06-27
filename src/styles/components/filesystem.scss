@@ -3,6 +3,7 @@
   background-color: $gray_background;
   border-radius: 4px;
   overflow-x: auto;
+  position: relative;
 
   .filesystem_header {
     color: $muted_text;
@@ -11,6 +12,9 @@
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
+    width: 100%;
+    position: sticky;
+    left: 0;
 
     h2 {
       font-size: 0.85rem;
@@ -20,8 +24,10 @@
     }
 
     .header_actions {
-      .icon {
-        margin: 0 4px;
+      > button {
+        .icon {
+          margin: 0 0 0 8px;
+        }
         &:first-child {
           margin-right: 1rem;
         }
@@ -32,6 +38,9 @@
   .filesystem_path-container {
     padding-bottom: 1rem;
     color: $dark_text;
+    position: sticky;
+    // z-index: -1;
+    left: 0;
     ul {
       display: flex;
 
@@ -61,37 +70,93 @@
         &:first-child,
         &:nth-child(2) {
           text-align: left;
-          cursor: pointer;
-          &:hover {
-            color: darken($color: #000000, $amount: 0);
+
+          span {
+            cursor: pointer;
+            &:hover {
+              color: darken($light_text, 30);
+            }
           }
         }
 
         &:first-child,
         &:last-child {
-          width: 2rem !important;
-          max-width: 2rem;
+          width: 3rem;
         }
 
         &:nth-child(2),
         &:nth-child(3),
         &:nth-child(4) {
           min-width: 13rem;
+          max-width: 14rem;
+          overflow-x: hidden;
         }
       }
       th {
         color: $dark_text;
         border-color: darken($color: $light_gray_background, $amount: 20);
+
+        &.sorting-column {
+          cursor: pointer;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+          }
+
+          &.selected {
+            color: lighten($color: $dark_text, $amount: 30);
+
+            &::after {
+              border-bottom: 2px solid $emphasis_orange;
+            }
+
+            &.asc {
+              &::after {
+                border-bottom: none;
+                border-top: 2px solid $emphasis_orange;
+                top: 0;
+              }
+            }
+          }
+
+          &:hover {
+            color: lighten($color: $dark_text, $amount: 20);
+          }
+        }
       }
       td {
         color: $light_text;
         border-color: darken($color: $light_gray_background, $amount: 25);
+
+        &.content-type-name {
+          position: relative;
+
+          &:hover {
+            color: darken($light_text, 30);
+            .edit-icon {
+              display: inline-block;
+            }
+          }
+
+          .edit-icon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            display: none;
+            // padding: 0 0.5rem;
+          }
+        }
       }
     }
   }
 }
 
-// AddFolder component
+// Edit Folder component
 .add-folder {
   padding: 0.5rem 0 1rem;
 
@@ -114,6 +179,85 @@
       }
 
       input {
+        background-color: $light_background;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        color: $dark_text;
+      }
+
+      .text-error {
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+        color: $dark_text;
+      }
+    }
+
+    .form_actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+
+      .actions_btn {
+        margin-top: 0.5rem;
+        background-color: $dark_background;
+        padding: 4px 16px 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: $light_text;
+
+        &:hover {
+          background-color: lighten($color: $dark_background, $amount: 10);
+        }
+        &:active {
+          background-color: lighten($color: $dark_background, $amount: 15);
+        }
+
+        &.cancel-btn {
+          color: darken($color: $light_text, $amount: 20);
+        }
+      }
+
+      @media screen and (min-width: 36rem) {
+        display: flex;
+        flex-direction: row;
+
+        .actions_btn {
+          &.cancel-btn {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Edit File component
+// TODO this can all be merged into a single component
+// TODO move this to their own files
+.add-file {
+  padding: 0.5rem 0 1rem;
+
+  .add-file_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 33.125rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+      position: relative;
+
+      label {
+        font-size: 0.85rem;
+        color: lighten($black_text, 15);
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      textarea {
         background-color: $light_background;
         border-radius: 4px;
         padding: 0.5rem 1rem;

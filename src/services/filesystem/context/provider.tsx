@@ -1,6 +1,10 @@
 import { createContext, Dispatch, useReducer } from 'react';
 import { reducer } from '.';
-import { FilesystemState, NavigateToFolderAction } from '../types';
+import {
+  FilesystemState,
+  FilesystemTypes,
+  NavigateToFolderAction,
+} from '../types';
 import { AllActions } from './reducer';
 
 // TODO interface move to types
@@ -13,17 +17,19 @@ export const initialFilesystemState: FilesystemState = {
   // TODO testing
   currentPath: [],
   root: {
-    type: 'folder',
+    id: '0',
+    type: FilesystemTypes.FOLDER,
     name: 'My filesystem',
     createdAt: '2022-06-22',
     updatedAt: '2022-06-22',
     content: [
       {
+        id: '1234',
         name: 'Test folder',
         content: [],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        type: 'folder',
+        type: FilesystemTypes.FOLDER,
       },
     ],
   },

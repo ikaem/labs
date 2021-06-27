@@ -11,16 +11,18 @@
     flex-wrap: wrap;
 
     .start-button {
-      background-color: $dark_background;
+      // background-color: $dark_background;
+      background-color: $emphasis_orange;
+      color: $black_text;
       padding: 4px 16px 6px;
       border-radius: 4px;
       cursor: pointer;
 
       &:hover {
-        background-color: lighten($color: $dark_background, $amount: 10);
+        background-color: lighten($color: $emphasis_orange, $amount: 10);
       }
       &:active {
-        background-color: lighten($color: $dark_background, $amount: 15);
+        background-color: lighten($color: $emphasis_orange, $amount: 15);
       }
     }
 

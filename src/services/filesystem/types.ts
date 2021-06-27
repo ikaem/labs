@@ -23,13 +23,34 @@ export interface AddFileAction {
   payload: TextFile;
 }
 
+export interface ModifyFileAction {
+  type: FilesystemActionTypes.MODIFY_FILE;
+  payload: TextFile;
+}
+
 export interface AddFolderAction {
   type: FilesystemActionTypes.ADD_FOLDER;
   payload: Folder;
 }
 
+export interface ModifyFolderAction {
+  type: FilesystemActionTypes.MODIFY_FOLDER;
+  payload: Folder;
+}
+
+export interface DeleteItemAction {
+  type: FilesystemActionTypes.DELETE_ITEM;
+  payload: string;
+}
+
+export enum FilesystemTypes {
+  FOLDER = 'folder',
+  TEXT_FILE = 'text',
+}
+
 export interface Folder {
-  type: 'folder';
+  id: string;
+  type: FilesystemTypes.FOLDER;
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -37,7 +58,8 @@ export interface Folder {
 }
 
 export interface TextFile {
-  type: 'text';
+  id: string;
+  type: FilesystemTypes.TEXT_FILE;
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -49,4 +71,9 @@ export interface FilesystemState {
   currentFolder: (Folder | TextFile)[];
   currentPath: string[];
   root: Folder;
+}
+
+export interface FilesystemSort {
+  sortBy: 'type' | 'name' | 'createdAt' | 'updatedAt';
+  order: 'desc' | 'asc';
 }
