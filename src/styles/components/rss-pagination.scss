@@ -1,0 +1,51 @@
+.rss-pagination {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .rss-pagination_navigators {
+    display: flex;
+
+    button {
+      background-color: $light_gray_background;
+      margin: 4px;
+      padding: 2px 8px 4px;
+      border-radius: 4px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten($color: $light_gray_background, $amount: 20);
+      }
+
+      &:disabled {
+        background-color: $dark_background;
+        color: $muted_text;
+      }
+    }
+  }
+
+  .rss-pagination_page-size {
+    form {
+      padding: 0.5rem 0;
+      .form-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: 0.85rem;
+          color: $dark_text;
+          margin-bottom: 0.25rem;
+        }
+
+        select {
+          background-color: $dark_background;
+          border-radius: 4px;
+          padding: 0.5rem;
+          color: $light_text;
+        }
+      }
+    }
+  }
+}

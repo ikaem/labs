@@ -1,0 +1,40 @@
+.rss-feed-source {
+  border-top: 1px solid $light_gray_background;
+  padding: 1.5rem 0 0;
+
+  .rss-feed-source_article {
+    background-color: $white_background;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .article_header {
+      color: $dark_text;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $muted_text;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-end;
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-right: auto;
+      }
+
+      span {
+        font-size: 0.85rem;
+        color: $muted_text;
+      }
+    }
+
+    .article_body {
+      padding: 0.5rem 0;
+      line-height: 1.6;
+    }
+  }
+}

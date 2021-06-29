@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { OptionalChain } from 'typescript';
 import { Modal } from '..';
 import { TextFile, FilesystemTypes } from '../../../services/filesystem/types';
 import { VALID_FILE_FOLDER_NAME_EXPRESSION } from '../../constants';
@@ -30,7 +29,6 @@ export const FileEditorModal: React.FC<Partial<FileEditorModalProps>> = ({
 };
 
 interface FileEditorProps {
-  // TODO type this properly
   submitFile: (textFile: TextFile) => void;
   cancelEditFile: (e: React.MouseEvent<Element, MouseEvent>) => void;
   textFile?: TextFile;
@@ -60,10 +58,7 @@ function FileEditor({ submitFile, cancelEditFile, textFile }: FileEditorProps) {
 
     if (isInvalidNameInput) return setIsNameTouched(true);
 
-    // TODO here we add the file to the state
-    // CAL
     submitFile(editedFile);
-    console.log('meh');
   };
 
   const handleChange = (
@@ -71,7 +66,6 @@ function FileEditor({ submitFile, cancelEditFile, textFile }: FileEditorProps) {
   ) => {
     const { name, value } = e.target;
 
-    console.log('here', { name, value });
     setEditedFile((prev) => ({ ...prev, [name]: value }));
     if (name === 'name') setIsNameTouched(true);
   };
@@ -105,8 +99,6 @@ function FileEditor({ submitFile, cancelEditFile, textFile }: FileEditorProps) {
             rows={15}
           />
         </div>
-        {/* TODO make this a custom button */}
-        {/* TODO maybe use as a start button, too */}
 
         <div className='form_actions'>
           <button type='submit' className='actions_btn submit-btn'>

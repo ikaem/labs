@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
-import { Filesystem, Layout } from '../../common/components';
+import { useEffect } from 'react';
+import { Filesystem, Layout, RSSReader } from '../../common/components';
 import { useFilesystem } from '../../services/filesystem';
 
 export const OS: React.FC = () => {
@@ -15,7 +15,9 @@ export const OS: React.FC = () => {
         <div className='os_func-wrapper'>
           <Filesystem />
         </div>
-        <div className='os_func-wrapper'>Hello</div>
+        <div className='os_func-wrapper'>
+          <RSSReader />
+        </div>
       </div>
     </Layout>
   );

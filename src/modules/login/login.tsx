@@ -27,7 +27,6 @@ export const Login: React.FC = () => {
   });
 
   useEffect(() => {
-    //   TODO this needs revert
     if (isLoggedIn) history.push('/home');
   }, [isLoggedIn]);
 
@@ -64,8 +63,6 @@ export const Login: React.FC = () => {
               <div className='text-error'>{errors.password?.message}</div>
             )}
           </div>
-          {/* TODO make this a custom button */}
-          {/* TODO maybe use as a start button, too */}
           <button type='submit'>Login</button>
         </form>
       </section>

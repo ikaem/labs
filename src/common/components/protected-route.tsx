@@ -10,8 +10,6 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = () => {
   const history = useHistory();
 
   useEffect(() => {
-    //   TODO this needs revert
-    // if (!isLoggedIn) navigate('/login');
     if (!isLoggedIn) history.push('/login');
   }, [isLoggedIn]);
 

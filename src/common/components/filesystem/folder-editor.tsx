@@ -11,8 +11,6 @@ export const FolderEditorModal: React.FC<Partial<FolderEditorModalProps>> = ({
   closeModal,
   submitFolder,
   folder,
-  //   TODO not sure about this
-  //   cancelEditFile,
 }) => {
   return (
     <Modal
@@ -30,7 +28,6 @@ export const FolderEditorModal: React.FC<Partial<FolderEditorModalProps>> = ({
 };
 
 interface FolderEditorProps {
-  // TODO type this properly
   submitFolder: (folder: Folder) => void;
   cancelEditFolder: (e: React.MouseEvent<Element, MouseEvent>) => void;
   folder?: Folder;
@@ -59,7 +56,7 @@ function FolderEditor({
 
   useEffect(() => {
     if (nameRef.current) nameRef.current.focus();
-  }, [nameRef.current]);
+  }, []);
 
   const isInvalidInput = !VALID_FILE_FOLDER_NAME_EXPRESSION.test(
     editedFolder.name
@@ -72,12 +69,10 @@ function FolderEditor({
     if (isInvalidInput) return setIsNameTouched(true);
 
     submitFolder(editedFolder);
-    console.log('meh');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    console.log('name', value);
     setEditedFolder((prev) => ({
       ...prev,
       name: value,
@@ -104,9 +99,6 @@ function FolderEditor({
             <div className='text-error'>Valid folder name is required</div>
           )}
         </div>
-
-        {/* TODO make this a custom button */}
-        {/* TODO maybe use as a start button, too */}
 
         <div className='form_actions'>
           <button type='submit' className='actions_btn submit-btn'>

@@ -40,9 +40,7 @@ export const useFilesystem = () => {
   const [editFileControl, setEditFileControl] =
     useState<FileEditorModalProps | null>(null);
 
-  const [storedFilesystem, setStoredFilesystem] = useStoredFilesystem();
-
-  console.log('stored from local', storedFilesystem);
+  const [_storedFilesystem, setStoredFilesystem] = useStoredFilesystem();
 
   const loadStoredFilesystem = (storedFilesystem: FilesystemState) => {
     dispatchFilesystemState(loadFilesystem(storedFilesystem));
@@ -94,7 +92,6 @@ export const useFilesystem = () => {
   };
 
   const deleteItem = (id: string) => {
-    console.log('id', id);
     dispatchFilesystemState(removeItem(id));
   };
 
@@ -154,8 +151,6 @@ export const useFilesystem = () => {
 
     setEditFileControl(config);
   }
-
-  console.log('file and folder', currentFolder);
 
   useEffect(() => {
     setCurrentFolder();

@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router';
 import { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { ProtectedRoute } from './common/components';

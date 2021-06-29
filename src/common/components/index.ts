@@ -4,4 +4,5 @@ export { Modal } from './modal';
 export { ProtectedRoute } from './protected-route';
 export { TopBar } from './top-bar';
 export { Clock } from './clock';
+export { RSSReader } from './apps';
 export * from './icons';

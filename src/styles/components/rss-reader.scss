@@ -1,0 +1,76 @@
+.rss-reader {
+  padding: 1rem 1rem 2rem;
+  background-color: $gray_background;
+  border-radius: 4px;
+  overflow-x: auto;
+  position: relative;
+
+  .rss-reader_header {
+    color: $muted_text;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $muted_text;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    left: 0;
+
+    h2 {
+      font-size: 0.85rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-right: auto;
+    }
+
+    .header_actions {
+      > button {
+        .icon {
+          margin: 0 0 0 8px;
+        }
+      }
+    }
+  }
+
+  .rss-reader_feed-selector {
+    padding-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+
+    .feed-selector_form {
+      flex: 0.65;
+      max-width: 24rem;
+      min-width: 15rem;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: 0.85rem;
+          color: $dark_text;
+          margin-bottom: 0.5rem;
+        }
+
+        select {
+          background-color: $dark_background;
+          border-radius: 4px;
+          padding: 0.5rem;
+          color: $light_text;
+        }
+      }
+    }
+
+    .feed-selection_actions {
+      margin: 0 0 0 2rem;
+
+      button {
+        margin-bottom: 0.25rem;
+
+        &:nth-child(2) {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+}

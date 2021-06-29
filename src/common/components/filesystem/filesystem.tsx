@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo } from 'react';
 import clsx from 'clsx';
 
 import {
@@ -14,15 +14,8 @@ import { useFilesystem } from '../../../services/filesystem';
 
 import { FileEditorModal, FolderEditorModal } from '.';
 
-interface FilesystemProps {
-  //   currentPath: string[];
-  //   curentFolder: (Folder | String)[];
-}
-
-export const Filesystem: React.FC<FilesystemProps> = () => {
+export const Filesystem: React.FC = () => {
   const {
-    // TODO root might not needed
-    root,
     currentFolder,
     currentPath,
     goToFolder,
@@ -65,7 +58,7 @@ export const Filesystem: React.FC<FilesystemProps> = () => {
       <td>{new Date(e.updatedAt).toLocaleString()}</td>
       <td>
         <button onClick={() => deleteItem(e.id)}>
-          <DeleteIcon className='delete-icon icon' />
+          <DeleteIcon className='delete-icon icon' title='Delete' />
         </button>
       </td>
     </tr>
@@ -171,6 +164,7 @@ export const Filesystem: React.FC<FilesystemProps> = () => {
           </table>
         </div>
       </section>
+      {/* TODO remove optional stuff from here and just add some default state in modal controls*/}
       <FileEditorModal
         modalTitle={editFileControl?.modalTitle}
         isModalOpen={editFileControl?.isModalOpen}

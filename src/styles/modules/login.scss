@@ -55,11 +55,8 @@
         color: $dark_text;
       }
     }
-    // TODO this botton same as start probably
-    // TODO rule only for when it is different screen sizes
-    // TODO otherwise, create a component
+
     button {
-      // TODO margin also stays here
       margin-top: 0.5rem;
       background-color: $light_gray_background;
       padding: 4px 16px 6px;

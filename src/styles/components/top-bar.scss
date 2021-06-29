@@ -12,7 +12,6 @@
     flex-wrap: wrap;
 
     .start-button {
-      // background-color: $dark_background;
       background-color: $emphasis_orange;
       color: $black_text;
       padding: 4px 16px 6px;
@@ -49,9 +48,6 @@
     color: darken($emphasis_orange, 7);
 
     .greeting {
-      // display: flex;
-      // align-items: center;
-
       span,
       svg {
         display: inline-block;

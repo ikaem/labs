@@ -14,7 +14,6 @@ import {
 import { FilesystemActionTypes } from '.';
 import { getCurrentFolderContents } from '../../../common/helpers';
 
-// TODO type aciton
 export type AllActions =
   | ChangeCurrentFolderAction
   | NavigateToFolderAction

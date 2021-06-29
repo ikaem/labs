@@ -1,0 +1,1 @@
+export { RSSReaderProvider } from './provider';

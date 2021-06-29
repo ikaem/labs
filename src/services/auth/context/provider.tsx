@@ -1,7 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
 import { AuthState } from '../types';
 
-// TODO type this
 export const intialAuthState: AuthState = {
   username: null,
   isLoggedIn: false,

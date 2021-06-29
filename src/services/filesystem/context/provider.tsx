@@ -1,20 +1,11 @@
 import { createContext, Dispatch, useReducer } from 'react';
 import { reducer } from '.';
-import {
-  FilesystemState,
-  FilesystemTypes,
-  NavigateToFolderAction,
-} from '../types';
+import { FilesystemState, FilesystemTypes } from '../types';
 import { AllActions } from './reducer';
 
-// TODO interface move to types
-
-// TODO type this
 export const initialFilesystemState: FilesystemState = {
-  // TODO not sure about this, leave comment
   currentFiles: [],
   currentFolder: [],
-  // TODO testing
   currentPath: [],
   root: {
     id: '0',
