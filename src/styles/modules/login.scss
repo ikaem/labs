@@ -71,5 +71,14 @@
         background-color: lighten($color: $dark_background, $amount: 15);
       }
     }
+
+    .login-error {
+      padding: 0.5rem 0;
+      margin-top: 1rem;
+      background-color: $emphasis_orange;
+      color: $light_text;
+      text-align: center;
+      border-radius: 4px;
+    }
   }
 }

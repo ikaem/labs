@@ -14,7 +14,7 @@ const validationSchema = yup.object({
 });
 
 export const Login: React.FC = () => {
-  const { isLoggedIn, login } = useAuth();
+  const { isLoggedIn, login, isLoginError } = useAuth();
   const history = useHistory();
 
   const {
@@ -64,6 +64,9 @@ export const Login: React.FC = () => {
             )}
           </div>
           <button type='submit'>Login</button>
+          {isLoginError && (
+            <div className='login-error'>Authentication failed</div>
+          )}
         </form>
       </section>
     </Layout>

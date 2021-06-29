@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 
@@ -10,6 +10,8 @@ export const useAuth = () => {
   const useStoredAuth = createLocalStorageStateHook<AuthState>(
     localStorageKeys.AUTH
   );
+
+  const [isLoginError, setIsLoginError] = useState(false);
 
   const history = useHistory();
   const {
@@ -24,9 +26,10 @@ export const useAuth = () => {
   };
 
   const login = ({ username, password }: LoginCredentials) => {
+    setIsLoginError(false);
     if (username !== USER.username || password !== USER.password) {
       // TODO show errors here with add toast
-      return;
+      return setIsLoginError(true);
     }
     setAuthState({ username, isLoggedIn: true });
     setStoredAuth({ username, isLoggedIn: true });
@@ -45,5 +48,6 @@ export const useAuth = () => {
     logout,
     loadStoredAuth,
     useStoredAuth,
+    isLoginError,
   };
 };

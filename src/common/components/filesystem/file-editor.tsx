@@ -92,7 +92,6 @@ function FileEditor({ submitFile, cancelEditFile, textFile }: FileEditorProps) {
           <label htmlFor='name'>Content</label>
           <textarea
             id='content'
-            required
             name='content'
             value={editedFile.content}
             onChange={handleChange}
