@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
+import { time } from 'uniqid';
 import { ProtectedRoute } from './common/components';
 import { Login } from './modules/login';
 import { useAuth } from './services/auth';
@@ -11,6 +12,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (storedAuth) loadStoredAuth(storedAuth);
+
+    const timeoutId = setTimeout(() => {
+      // throw new Error('Hello');
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
